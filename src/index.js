@@ -10,4 +10,3 @@ root.render(
   </React.StrictMode>
 );
 
-// The reportWebVitals import and call have been removed
