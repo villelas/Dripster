@@ -1,78 +1,48 @@
 import React, { useEffect, useRef } from 'react';
 import './Homepage.css';
 import gsap from 'gsap';
+import '../../components/Header/Header.css';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 function Homepage() {
   const gooWrapperRef = useRef(null);
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  const handleSignIn = () => {
+    navigate('/sign-in'); // Navigate to the sign-in page
+  };
 
   useEffect(() => {
-    const createSplash = (drop) => {
-      const splash = document.createElement('div');
-      splash.classList.add('splash');
-
-      const dropRect = drop.getBoundingClientRect();
-      const parentRect = document.querySelector('.goo').getBoundingClientRect();
-
-      const left = dropRect.left - parentRect.left + dropRect.width / 2;
-      const top = parentRect.height - 10;
-
-      splash.style.left = `${left}px`;
-      splash.style.top = `${top}px`;
-
-      const parent = document.querySelector('.goo');
-      parent.appendChild(splash);
-
-      gsap.to(splash, {
-        scale: 5,
-        opacity: 0,
-        duration: 1,
-        ease: 'power1.out',
-        onComplete: () => splash.remove(),
-      });
-    };
-
     const drops = gsap.utils.toArray('.drop');
     const h1Element = document.querySelector('.goo h1');
 
-    if (!h1Element || drops.length === 0) return;
+    if (!h1Element || drops.length === 0) {
+      console.warn("Required elements are not present in the DOM");
+      return;
+    }
 
     const h1Rect = h1Element.getBoundingClientRect();
 
     drops.forEach((drop, i) => {
-      const duration = gsap.utils.random(8, 12); // Randomized duration
-      const delay = i * 1.5; // Staggered start
-      let splashTriggered = false;
+      const duration = gsap.utils.random(8, 12);
+      const delay = i * 1.5;
 
       gsap.fromTo(
         drop,
         {
-          x: gsap.utils.random(h1Rect.left, h1Rect.right) - h1Rect.width / 2, // Start within h1 width
-          y: h1Rect.bottom + 20 + window.scrollY, // Start slightly lower than h1
-          scale: gsap.utils.random(0.8, 1.2), // Slight size variation
+          x: gsap.utils.random(h1Rect.left, h1Rect.right) - h1Rect.width / 2,
+          y: h1Rect.bottom + 20 + window.scrollY,
+          scale: gsap.utils.random(0.8, 1.2),
           opacity: 0.7,
         },
         {
-          x: `+=${gsap.utils.random(-20, 20)}`, // Add slight horizontal drift
-          y: '85vh', // Drops end slightly above the bottom
+          x: `+=${gsap.utils.random(-20, 20)}`,
+          y: '85vh',
           opacity: 1,
           duration,
           delay,
-          repeat: -1, // Infinite loop
+          repeat: -1,
           ease: 'power1.in',
-          onUpdate: () => {
-            const dropRect = drop.getBoundingClientRect();
-            const parentRect = document.querySelector('.goo').getBoundingClientRect();
-            const bottomY = parentRect.height - 10;
-
-            if (dropRect.top + dropRect.height >= bottomY && !splashTriggered) {
-              splashTriggered = true;
-              createSplash(drop);
-
-              setTimeout(() => {
-                splashTriggered = false;
-              }, 500);
-            }
-          },
           onStart: () => {
             gsap.set(drop, {
               x: gsap.utils.random(h1Rect.left, h1Rect.right) - h1Rect.width / 2,
@@ -88,6 +58,16 @@ function Homepage() {
 
   return (
     <div>
+      {/* Add Header component */}
+      <div className="top-header">
+        <nav className="nav-menu">
+          <a href="#home">Home</a>
+          <a href="#creator">Creator</a>
+          <a href="#ai-agent">AI Agent</a>
+          <a href="#color-theory">Color Theory</a>
+        </nav>
+      </div>
+
       <div className="goo-wrapper" ref={gooWrapperRef}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -103,17 +83,8 @@ function Homepage() {
               <feColorMatrix
                 in="blur"
                 mode="matrix"
-                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 15 -7"
+                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 15 -9"
                 result="goo"
-              />
-            </filter>
-            <filter id="goo-light">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
-              <feColorMatrix
-                in="blur"
-                mode="matrix"
-                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 10 -5"
-                result="goo-light"
               />
             </filter>
           </defs>
@@ -128,7 +99,9 @@ function Homepage() {
       </div>
       <div className="subheading">Welcome to the drip experience</div>
       <div className="sign-in-wrapper">
-        <button className="sign-in-button">Sign In</button>
+        <button className="sign-in-button" onClick={handleSignIn}>
+          Sign In
+        </button>
       </div>
     </div>
   );

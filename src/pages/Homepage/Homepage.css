@@ -64,7 +64,21 @@ body {
   background: linear-gradient(to right, #6a35b7, #1500ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; /* Gradient text */
-  filter: goo-light; /* Apply goo effect to the text */
+  opacity: 0; /* Initially invisible */
+  transform: translateY(50px); /* Start slightly below its final position */
+  animation: riseUp 1.5s ease-out forwards; /* Trigger the animation */
+  animation-delay: 0.5s; /* Optional delay for dramatic effect */
+}
+
+@keyframes riseUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 /* Drops */
 .drops-container {
@@ -135,11 +149,11 @@ body {
 
 /* Button Styling */
 .sign-in-button {
-  padding: 15px 90px; /* Larger padding for prominent button */
-  font-size: 35px; /* Bigger font size */
+  padding: 15px 40px; /* Larger padding for prominent button */
+  font-size: 30px; /* Bigger font size */
   font-family: 'GraffitiYouth', sans-serif; /* Match the header font */
   color: #fff;
-  background: linear-gradient(90deg, #572da7, #1500ff); /* Gradient to match the theme */
+  background: linear-gradient(90deg, #572da7, #120f30); /* Gradient to match the theme */
   border-radius: 40px; /* More rounded corners for a modern look */
   cursor: pointer;
   box-shadow: 0 8px 20px rgba(87, 45, 167, 0.5); /* Softer shadow */
