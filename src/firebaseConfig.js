@@ -1,22 +1,32 @@
-import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
+// Import the necessary Firebase modules
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
+// Firebase configuration using environment variables
 const firebaseConfig = {
-    apiKey: "AIzaSyByM7JVefFe7sssjxuvqaq1pg9yGrUTCqM",
-    authDomain: "dripster-c9c11.firebaseapp.com",
-    projectId: "dripster-c9c11",
-    storageBucket: "dripster-c9c11.firebasestorage.app",
-    messagingSenderId: "47166065113",
-    appId: "1:47166065113:web:85ade1db2363f3f797f1c8",
-    measurementId: "G-VCMY2LH2JY"
-  };
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+};
+console.log("Firebase Config:", {
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+});
+
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Authentication Exports
-export const auth = getAuth(app);
-export const googleProvider = new GoogleAuthProvider();
-export const signInWithGoogle = () => signInWithPopup(auth, googleProvider);
-export const logout = () => signOut(auth);
+// Optionally initialize Analytics
+const analytics = getAnalytics(app);
 
 export default app;

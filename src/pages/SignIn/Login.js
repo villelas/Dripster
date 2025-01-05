@@ -1,11 +1,12 @@
 import React from 'react';
 import './Login.css';
+import app from "../../firebaseConfig";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import googleIcon from '../../assets/google-icon.png'; // Add your Google icon image hereiimport app from "../../firebaseConfig"; // Import Firebase initialization
 
 const Login = () => {
   const handleGoogleSignIn = () => {
-    const auth = getAuth();
+    const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
 
     signInWithPopup(auth, provider)
