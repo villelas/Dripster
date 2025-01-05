@@ -1,42 +1,111 @@
-.login-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #6a35b7, #1500ff);
-    color: #fff;
-  }
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Perfect vertical centering */
+  height: 100vh;
+  font-family: "poppins", sans-serif;
+  background-color: #27134b;
+}
+@font-face {
+  font-family: 'DripOctober';
+  src: url('../../fonts/StayDrips-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+.login-page .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+
+
+.login-page .form-container {
+  position: relative;
+  border: 4px solid hsla(0, 0%, 65%, 0.158);
+  box-shadow: 0 0 36px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 20px; /* Smoother edges */
+  backdrop-filter: blur(20px);
+  padding: 3rem;
+  width: 30rem;
+  height: 30rem;
+  z-index: 99;
   
-  .login-container h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
+
   
-  .login-container p {
-    margin-bottom: 2rem;
-    text-align: center;
-    font-size: 1.2rem;
-  }
-  
-  .social-buttons button {
-    margin: 0.5rem;
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    color: #fff;
-    background-color: #4b287c;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-  }
-  
-  .social-buttons button:hover {
-    background-color: #f0e130;
-    transform: scale(1.1);
-  }
-  
-  .social-buttons button:active {
-    transform: scale(0.95);
-  }
-  
+}
+
+
+.login-page .form-container img.illustration {
+  position: absolute;
+  top: -10%;
+  right: 1%;
+  width: 70%;
+}
+
+.login-page .form-container h1 {
+  font-size: 3rem; /* Larger title font size */
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-left: -9rem;
+  background: linear-gradient(90deg, #ffffff, #e0c3fc, #8ec5fc); /* Gradient color */
+  -webkit-background-clip: text; /* Use the gradient as text color */
+  -webkit-text-fill-color: transparent; /* Make the gradient visible */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+  letter-spacing: 2px; /* Add spacing between letters */
+  font-family: "Poppins", sans-serif; /* Ensure a clean, modern font */
+  font-weight: 700;
+}
+
+.login-page .google-signin-button {
+  display: flex; /* Flex for icon and text alignment */
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff; /* Google button white background */
+  color: #4285f4; /* Google blue text */
+  padding: 1rem;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid #4285f4;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+  gap: 10px; /* Spacing between icon and text */
+  margin-top: 20rem; /* Adds spacing to lower the button */
+}
+
+.login-page .google-signin-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(66, 133, 244, 0.5);
+}
+
+
+.login-page .google-icon {
+  width: 40px; /* Icon size */
+  height: 40px;
+}
+
+.login-page .circle {
+  width: 8rem; /* Adjust circle size */
+  height: 8rem;
+  background: #6e64d7; /* Primary color */
+  border-radius: 50%;
+  position: absolute; /* Position circles within the form container */
+  z-index: 0;
+ 
+}
+
+.login-page .circle-one {
+  top: 4rem; /* Moves the circle further down */
+  left: 30rem; /* Adjusted for horizontal alignment */
+}
+
+.login-page .circle-two {
+  bottom: 4rem; /* Position relative to the bottom-right of the form container */
+  right: 30rem;
+}
