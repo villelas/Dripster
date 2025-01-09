@@ -1,7 +1,7 @@
 import React from 'react';
 import './Login.css';
 import {app} from '../../firebaseConfig'; // Import Firebase initialization
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import googleIcon from '../../assets/google-icon.png'; // Add your Google icon image hereiimport app from "../../firebaseConfig"; // Import Firebase initialization
 import {db} from '../../firebaseConfig'; // Import Firebase initialization
 import { doc, setDoc } from 'firebase/firestore';
@@ -37,7 +37,7 @@ const Login = () => {
       console.log("User info saved, navigating to /set-dripstername");
 
       // Redirect to Dripstername setup page
-      navigate("/set-dripstername");
+      navigate('/set-dripstername', { state: { email: user.email } });
     } catch (error) {
       console.error('Error during sign-in:', error);
       alert('Failed to sign in. Please try again.');

@@ -1,0 +1,119 @@
+/* Gooey Welcome */
+.goo {
+    font-family: 'DripOctober', sans-serif;
+    font-size: 180px;
+    color: #572da7;
+    text-shadow: 7px 9px 0 #09010a;
+    margin: 0;
+    font-weight: normal;
+    letter-spacing: 2px;
+    z-index: 10;
+    filter: url(#goo);
+  }
+  
+  /* Subheading */
+  .subheading-setupdripster {
+    font-size: 1.8rem;
+    font-style: italic;
+    color: #4b0082;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  
+  /* Form Styling */
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-container label {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #4b0082;
+  }
+  
+  .form-container input {
+    padding: 15px;
+    border-radius: 12px;
+    border: 2px solid #8a2be2;
+    width: 320px;
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    color: #4b0082;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .form-container button {
+    padding: 15px 35px;
+    background-color: #8a2be2;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+  }
+  .paint-spray-container {
+    position: relative;
+    text-align: center;
+    margin-top: 50px;
+    overflow: hidden;
+    background-color: #ffffff;
+    height: 100vh; /* Make the page fill the viewport */
+  }
+  
+  .sprayed-email {
+    font-family: 'GraffitiYouth', sans-serif; /* Graffiti-style font */
+    font-size: 60px;
+    font-weight: bold;
+    color: transparent;
+    background: linear-gradient(90deg, #ff4d4d, #ffaf40, #4d4dff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+    opacity: 0;
+    transform: scale(0.8); /* Start slightly smaller */
+    animation: sprayPaint 2s ease-out forwards, glow 1.5s infinite alternate;
+    margin-top: 20px;
+  }
+  
+  /* Animation for spray paint effect */
+  @keyframes sprayPaint {
+    0% {
+      opacity: 0;
+      background-size: 50%;
+      filter: blur(8px);
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 0.6;
+      background-size: 150%;
+      filter: blur(4px);
+    }
+    100% {
+      opacity: 1;
+      background-size: 100%;
+      filter: blur(0);
+      transform: scale(1);
+    }
+  }
+  
+  /* Glowing effect */
+  @keyframes glow {
+    0% {
+      text-shadow: 0 0 5px #ff4d4d, 0 0 10px #ffaf40, 0 0 20px #4d4dff;
+    }
+    100% {
+      text-shadow: 0 0 10px #ff4d4d, 0 0 15px #ffaf40, 0 0 30px #4d4dff;
+    }
+  }
+  @font-face {
+    font-family: 'GraffitiYouth';
+    src: url('../../fonts/GraffitiYouth-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+    
